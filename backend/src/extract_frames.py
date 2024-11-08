@@ -1,7 +1,7 @@
 import cv2
 import os
 
-def extract_frames(video_path, output_folder, skip_frames=2):
+def extract_frames(video_path, output_folder, skip_frames):
     os.makedirs(output_folder, exist_ok=True)
     vidcap = cv2.VideoCapture(video_path)
     success, image = vidcap.read()
@@ -18,4 +18,4 @@ def extract_frames(video_path, output_folder, skip_frames=2):
 video_path = 'videos/video.mp4'
 output_dir = 'outputs/frames'
 
-extract_frames(video_path, output_dir, skip_frames=2)
+extract_frames(video_path, output_dir, 1)

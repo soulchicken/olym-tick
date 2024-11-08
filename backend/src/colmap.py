@@ -41,7 +41,8 @@ def sparse_reconstruction():
 def undistort_images():
     print("Running dense reconstruction... 5-1")
     print("Running undistort images...")
-    run_command(f"colmap image_undistorter --image_path {image_folder} --input_path {sparse_folder} --output_path {dense_folder} --output_type COLMAP")
+    sparse_folder_one = os.path.join(sparse_folder, '0') # TODO: folder name
+    run_command(f"colmap image_undistorter --image_path {image_folder} --input_path {sparse_folder_one} --output_path {dense_folder} --output_type COLMAP")
 
 # 5.2 Stereo Matching
 def stereo_matching():
@@ -58,17 +59,25 @@ def fusion():
 # 6. Texture Mapping
 def texture_mapping():
     print("Running texture mapping...")
-    run_command(f"colmap model_converter --input_path {dense_folder}/fused.ply --output_path {dense_folder}/textured_model --output_type PLY")
+    fused_path = os.path.join(dense_folder, 'fused.ply')
+    textured_model_path = os.path.join(dense_folder, 'textured_model')
+    sparse_folder_one = os.path.join(sparse_folder, '0')  # Sparse reconstruction의 첫 번째 모델 폴더
+    
+    # 모델 변환
+    run_command(f"colmap model_converter --input_path {fused_path} --output_path {textured_model_path} --output_type PLY")
+    
+    # 텍스처 매핑
+    run_command(f"colmap texture_mapper --image_path {image_folder} --input_path {sparse_folder_one} --output_path {textured_model_path}")
 
 
 # make_workspace()
 # create_database()
 # feature_matching()
-sparse_reconstruction()
+# sparse_reconstruction()
 # undistort_images()
 # stereo_matching()
 # fusion()
-# texture_mapping()
+texture_mapping()
 
 # print("3D reconstruction and texture mapping completed.")
  
