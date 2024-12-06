@@ -1,11 +1,12 @@
 @layer reset, base, tokens, recipes, utilities;
 
 @font-face {
-  font-family: 'OlympicHeadline';
+  font-family: "OlympicHeadline";
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/OlympicHeadline-Regular.woff2') format('woff2'),
-       url('/fonts/OlympicHeadline-Regular.woff') format('woff');
+  src:
+    url("./fonts/OlympicHeadline-Regular.woff2") format("woff2"),
+    url("./fonts/OlympicHeadline-Regular.woff") format("woff");
 }
 
 @font-face {
@@ -27,6 +28,5 @@
 }
 
 body {
-  font-family: 'OlympicHeadline', 'Product-Sans', sans-serif;
   background-color: #000000;
 }
