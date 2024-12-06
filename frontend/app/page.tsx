@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 
 import ScrollButton from "@/app/components/ScrollButton";
-import FooterSection from "@/app/components/sections/footerSection";
+import FooterSection from "@/app/components/sections/FooterSection";
 import HistorySection from "@/app/components/sections/HistorySection";
 import Olympic1988Section from "@/app/components/sections/Olympic1988Section";
 import Olympic2036Section from "@/app/components/sections/Olympic2036Section";
