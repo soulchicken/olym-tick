@@ -15,9 +15,13 @@ import logoImg from "@/public/white-logo.png";
 import { css } from "@/styled-system/css";
 
 const Page = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const handleScroll = () => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  const olympic1988sectionRef = useRef<HTMLDivElement>(null);
+  const historySectionRef = useRef<HTMLDivElement>(null);
+  const olympic2036sectionRef = useRef<HTMLDivElement>(null);
+  const footerSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -43,30 +47,34 @@ const Page = () => {
             </Link>
           </div>
         </div>
-        <ScrollButton handleScroll={handleScroll} />
+        <ScrollButton
+          handleScroll={() => handleScroll(olympic1988sectionRef)}
+        />
       </section>
       <section
         className={`${sectionStyle} ${backgroundSection}`}
-        ref={sectionRef}
+        ref={olympic1988sectionRef}
       >
         <Olympic1988Section>
-          <ScrollButton handleScroll={handleScroll} />
+          <ScrollButton handleScroll={() => handleScroll(historySectionRef)} />
         </Olympic1988Section>
       </section>
-      <section className={historySectionStyle} ref={sectionRef}>
+      <section className={historySectionStyle} ref={historySectionRef}>
         <HistorySection>
-          <ScrollButton handleScroll={handleScroll} />
+          <ScrollButton
+            handleScroll={() => handleScroll(olympic2036sectionRef)}
+          />
         </HistorySection>
       </section>
       <section
         className={`${sectionStyle} ${backgroundSection}`}
-        ref={sectionRef}
+        ref={olympic2036sectionRef}
       >
         <Olympic2036Section>
-          <ScrollButton handleScroll={handleScroll} />
+          <ScrollButton handleScroll={() => handleScroll(footerSectionRef)} />
         </Olympic2036Section>
       </section>
-      <section className={sectionStyle} ref={sectionRef}>
+      <section className={sectionStyle} ref={footerSectionRef}>
         <FooterSection />
       </section>
     </main>
