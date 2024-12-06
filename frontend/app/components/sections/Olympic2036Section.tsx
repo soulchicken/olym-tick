@@ -23,7 +23,7 @@ const Olympic2036Section: React.FC<{ children: React.ReactNode }> = ({
         </h2>
         <div className={subStyle}>
           <p className={subTitleStyle}>
-            <div className={blueTextStyle}>new</div> harmony
+            <span className={blueTextStyle}>new</span> harmony
           </p>
           <p className={pStyle}>새로운 화합</p>
         </div>
