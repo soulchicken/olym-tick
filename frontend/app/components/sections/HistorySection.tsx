@@ -56,9 +56,7 @@ const h3Style = css({
 });
 
 const pStyle = css({
-  fontSize: "2.25rem",
-  lineHeight: "2rem",
+  fontSize: "1.5rem",
   fontFamily: "sans",
-  fontWeight: 700,
   color: "white",
 });

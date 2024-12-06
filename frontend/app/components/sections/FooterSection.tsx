@@ -1,7 +1,8 @@
-import { ol } from "framer-motion/client";
 import Image from "next/image";
 import Link from "next/link";
 
+import AppStoreImg from "@/assets/images/app_store.png";
+import PlayStoreImg from "@/assets/images/play_store.png";
 import RoundBox from "@/components/common/RoundBox";
 import RightArrow from "@/components/icons/RightArrow";
 import ticketImg from "@/public/ticket.png";
@@ -43,9 +44,9 @@ const FooterSection = () => {
         </RoundBox>
         <RoundBox col="3 / 4" row="2 / 3">
           <h4 className={h4Style}>offical app</h4>
-          <Link className={linkTextStyle} href="/olym-tick">
-            enter
-            <RightArrow width={12} />
+          <Link className={storeLinkStyle} href="/olym-tick">
+            <Image alt="app store" src={AppStoreImg} width={60} />
+            <Image alt="play store" src={PlayStoreImg} width={60} />
           </Link>
         </RoundBox>
         <RoundBox col="4 / 5" row="2 / 3">
@@ -103,6 +104,11 @@ const linkTextStyle = css({
   fontWeight: 700,
   fontSize: "1.25rem",
   fontFamily: "headline",
+});
+
+const storeLinkStyle = css({
+  display: "flex",
+  gap: "0.5rem",
 });
 
 const h4Style = css({
