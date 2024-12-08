@@ -30,17 +30,19 @@ const page = () => {
       </div>
       <div style={gridStyle}>
         <RoundBox>
-          <div style={wrapperStyle}>
-            <Image alt="remind" src={RemindImg} width={180} />
-            <div className={textBoxStyle}>
-              <p className={subTextStyle}>
-                올림픽을 보고 들었던 <br /> 현장의 기억을 돌아봐요.
-              </p>
-              <h2 className={h2Style}>
-                <span className={orangeTextStyle}>회상</span>하기
-              </h2>
+          <Link href="/olym-tick/remind">
+            <div style={wrapperStyle}>
+              <Image alt="remind" src={RemindImg} width={180} />
+              <div className={textBoxStyle}>
+                <p className={subTextStyle}>
+                  올림픽을 보고 들었던 <br /> 현장의 기억을 돌아봐요.
+                </p>
+                <h2 className={h2Style}>
+                  <span className={orangeTextStyle}>회상</span>하기
+                </h2>
+              </div>
             </div>
-          </div>
+          </Link>
         </RoundBox>
         <RoundBox>
           <div style={wrapperStyle}>
