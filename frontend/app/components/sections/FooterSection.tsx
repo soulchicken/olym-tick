@@ -129,6 +129,6 @@ const olymSubText = css({
 const mainGridItem = css({
   display: "flex",
   flexDirection: "row",
-  gap: "1rem",
   alignItems: "center",
+  justifyContent: "space-between",
 });
