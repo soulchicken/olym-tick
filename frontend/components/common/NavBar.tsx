@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { navMenu } from "@/app/constants/navMenu";
@@ -23,10 +24,12 @@ const NavBar = () => {
       }}
     >
       <div style={navBarSideStyle}>
-        <div style={logoStyle}>
-          <Image alt="logo" height={37} src={logoImg} width={82} />
-          <Image alt="2036-seoul" height={34} src={seoul2036} width={41} />
-        </div>
+        <Link href="/">
+          <div style={logoStyle}>
+            <Image alt="logo" height={37} src={logoImg} width={82} />
+            <Image alt="2036-seoul" height={34} src={seoul2036} width={41} />
+          </div>
+        </Link>
         <div>
           <ul style={ulStyle}>
             {navMenu.map((menu, index) => {

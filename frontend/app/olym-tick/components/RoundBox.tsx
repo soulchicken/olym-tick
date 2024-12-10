@@ -21,6 +21,5 @@ const roundBoxStyle = css({
   transition: "box-shadow 0.3s ease, border 0.3s ease",
   _hover: {
     boxShadow: "0 0 0 3px rgba(255, 255, 255, 0.6)",
-    border: "1px solid rgba(255, 255, 255, 0.8)",
   },
 });

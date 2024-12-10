@@ -1,36 +1,73 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import Script from "next/script";
 import React, { useEffect } from "react";
 
 const NaverMap = () => {
+  const router = useRouter();
   useEffect(() => {
     const initMap = () => {
       if (!window.naver || !window.naver.maps) return;
 
-      const map = new window.naver.maps.Map("map", {
-        center: new window.naver.maps.LatLng(37.56825004, 126.8972437),
-        zoom: 10,
+      const { naver } = window;
+
+      const map = new naver.maps.Map("map", {
+        center: new naver.maps.LatLng(37.56825004, 126.8972437), // 마포 월드컵 경기장
+        zoom: 12,
         mapTypeId: naver.maps.MapTypeId.SATELLITE,
-        // 마포 월드컵 경기장 : 37.56825004, 126.8972437
-        // 서울 숲 : 37.543574174, 127.044727503
       });
 
-      // 마커 추가 예시
-      new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(37.56825004, 126.8972437),
-        map,
-      });
+      // 좌표 배열
+      const locations = [
+        { name: "마포 월드컵 경기장", lat: 37.56825004, lng: 126.8972437 },
+        { name: "서울 숲", lat: 37.543574174, lng: 127.044727503 },
+      ];
 
-      new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(37.543574174, 127.044727503),
-        map,
+      locations.forEach((location) => {
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(location.lat, location.lng),
+          map,
+          title: location.name,
+        });
+        const path = locations.map(
+          (loc) => new naver.maps.LatLng(loc.lat, loc.lng)
+        );
+
+        new naver.maps.Polyline({
+          map,
+          path,
+          strokeColor: "#FF0000", // 선 색상
+          strokeWeight: 4, // 선 두께
+          strokeStyle: "solid", // 선 스타일
+        });
+        // InfoWindow 생성
+        const infoWindow = new naver.maps.InfoWindow({
+          content: `<div style="padding: 5px; font-size: 14px;">${location.name}</div>`,
+          disableAutoPan: true, // 마우스 오버 시 지도 이동 방지
+        });
+
+        // 마우스 오버/아웃 이벤트 처리
+        naver.maps.Event.addListener(marker, "mouseover", () => {
+          infoWindow.open(map, marker);
+        });
+
+        naver.maps.Event.addListener(marker, "mouseout", () => {
+          infoWindow.close();
+        });
+
+        // 마커 클릭 이벤트
+        naver.maps.Event.addListener(marker, "click", () => {
+          // alert(`${location.name} 마커를 클릭했습니다!`);
+          router.push("/olym-tick/remind/test");
+        });
       });
     };
 
-    // 네이버 지도 API 로드가 완료되면 지도 초기화
+    // 지도 API 로드 및 초기화
     if (!window.naver) {
       const script = document.createElement("script");
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6pgkaehbt0`;
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}`;
       script.onload = initMap;
       document.head.appendChild(script);
     } else {
@@ -40,7 +77,11 @@ const NaverMap = () => {
 
   return (
     <>
-      <div id="map" style={{ width: "100%", height: "100%" }} />
+      <Script
+        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}&submodules=geocoder`}
+        strategy="afterInteractive"
+      />
+      <div id="map" style={{ width: "100%", height: "500px" }} />
     </>
   );
 };
