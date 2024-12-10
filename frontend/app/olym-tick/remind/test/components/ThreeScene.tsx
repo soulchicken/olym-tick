@@ -23,16 +23,24 @@ const FitCameraToModel = ({ object }: { object: THREE.Object3D }) => {
       box.getSize(size);
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      const fov = (camera.fov * Math.PI) / 180;
-      const distance = maxDim / (2 * Math.tan(fov / 2));
-      const direction = center.clone().sub(camera.position).normalize();
 
-      camera.position.copy(
-        center.clone().add(direction.multiplyScalar(distance))
-      );
-      camera.near = distance / 10;
-      camera.far = distance * 10;
-      camera.lookAt(center);
+      // 카메라가 PerspectiveCamera인지 확인
+      if (camera instanceof THREE.PerspectiveCamera) {
+        const fov = (camera.fov * Math.PI) / 180;
+        const distance = maxDim / (2 * Math.tan(fov / 2));
+        const direction = center.clone().sub(camera.position).normalize();
+
+        camera.position.copy(
+          center.clone().add(direction.multiplyScalar(distance))
+        );
+        camera.near = distance / 10;
+        camera.far = distance * 10;
+        camera.lookAt(center);
+      } else {
+        console.warn(
+          "Camera is not a PerspectiveCamera. FitCameraToModel may not work correctly."
+        );
+      }
     }
   }, [object, camera]);
 
@@ -68,13 +76,15 @@ const CameraController = () => {
     };
 
     const handleWheel = (event: WheelEvent) => {
-      // fov 값을 휠 방향에 따라 변경
-      camera.fov = THREE.MathUtils.clamp(
-        camera.fov + event.deltaY * 0.05,
-        15, // 최소 줌
-        75 // 최대 줌
-      );
-      camera.updateProjectionMatrix(); // 변경된 값을 반영
+      if (camera instanceof THREE.PerspectiveCamera) {
+        // fov 값을 휠 방향에 따라 변경
+        camera.fov = THREE.MathUtils.clamp(
+          camera.fov + event.deltaY * 0.05,
+          15, // 최소 줌
+          75 // 최대 줌
+        );
+        camera.updateProjectionMatrix(); // 변경된 값을 반영
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -107,7 +117,10 @@ const CameraController = () => {
 const ThreeScene = () => {
   const gltf = useGLTF("/models/sangam.glb");
   return (
-    <Canvas style={{ width: "100vw", height: "100vh" }}>
+    <Canvas
+      camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 0, 10] }} // 기본 PerspectiveCamera 설정
+      style={{ width: "100vw", height: "100vh" }}
+    >
       {/* 전체적인 환경 광원 */}
       <ambientLight intensity={1} />
       {/* 특정 포인트를 강조하는 광원 */}
