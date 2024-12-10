@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import RoundBox from "@/app/olym-tick/remind/components/RoundBox";
