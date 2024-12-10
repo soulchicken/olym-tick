@@ -127,6 +127,7 @@ module.exports = {
     "jest.config.ts",
     "jest.setup.ts",
     "coverage/",
+    "next.config.mjs",
   ],
 
   env: {
