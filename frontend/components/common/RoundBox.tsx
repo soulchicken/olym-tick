@@ -1,3 +1,5 @@
+import { css } from "@/styled-system/css";
+
 interface RoundBoxProps {
   children: React.ReactNode;
   row: string;
@@ -6,7 +8,10 @@ interface RoundBoxProps {
 
 const RoundBox = ({ children, row, col }: RoundBoxProps) => {
   return (
-    <div style={{ ...outerStyle, gridColumn: `${col}`, gridRow: `${row}` }}>
+    <div
+      className={roundBoxStyle}
+      style={{ gridColumn: `${col}`, gridRow: `${row}` }}
+    >
       {children}
     </div>
   );
@@ -14,7 +19,7 @@ const RoundBox = ({ children, row, col }: RoundBoxProps) => {
 
 export default RoundBox;
 
-const outerStyle: React.CSSProperties = {
+const roundBoxStyle = css({
   position: "relative",
   padding: "2rem", // 내부 여백
   borderRadius: "20px", // 모서리 둥글게
@@ -26,4 +31,7 @@ const outerStyle: React.CSSProperties = {
   /* 외부 그라데이션 효과 */
   backgroundClip: "border-box",
   boxShadow: "0px 0px 0px 3px rgba(255, 255, 255, 0.3)", // 투명 보더 효과
-};
+  _hover: {
+    boxShadow: "0 0 0 3px rgba(255, 255, 255, 0.6)",
+  },
+});

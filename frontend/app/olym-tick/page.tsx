@@ -10,7 +10,7 @@ import { css } from "@/styled-system/css";
 
 const page = () => {
   return (
-    <main style={wrapperStyle}>
+    <main className={mainStyle}>
       <div className={textStyle}>
         <Image
           alt="logo"
@@ -46,7 +46,7 @@ const page = () => {
         </RoundBox>
         <RoundBox>
           <div style={wrapperStyle}>
-            <Image alt="memory" src={MemoryImg} width={120} />
+            <Image alt="memory" src={MemoryImg} width={100} />
             <div className={textBoxStyle}>
               <p className={subTextStyle}>
                 올림픽 현장의 기억을
@@ -64,6 +64,15 @@ const page = () => {
 };
 
 export default page;
+
+const mainStyle = css({
+  padding: "1rem",
+  height: "80vh",
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  gap: "2rem",
+});
 
 const h1Style = css({
   fontSize: "7.5rem",
@@ -113,6 +122,7 @@ const textStyle = css({
 });
 
 const wrapperStyle = {
+  padding: "1rem",
   height: "100%",
   display: "flex",
   justifyContent: "space-around",
@@ -121,7 +131,6 @@ const wrapperStyle = {
 };
 
 const gridStyle = {
-  height: "80vh",
   display: "grid",
   gridTemplateRows: "2fr 1fr",
   gap: "2rem",

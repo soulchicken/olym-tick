@@ -52,9 +52,9 @@ const backgroundImage = css({
 });
 
 const h2Style = css({
-  fontSize: "7.5rem",
+  fontSize: "6rem",
   letterSpacing: "0.075rem",
-  lineHeight: "6.25rem",
+  lineHeight: "5.5rem",
   fontFamily: "headline",
 });
 

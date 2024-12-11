@@ -30,21 +30,21 @@ const FooterSection = () => {
         </RoundBox>
         <RoundBox col="3 / 4" row="1 / 2">
           <h4 className={h4Style}>highLight</h4>
-          <Link className={linkTextStyle} href="/olym-tick">
+          <Link className={linkTextStyle} href="/">
             enter
             <RightArrow width={12} />
           </Link>
         </RoundBox>
         <RoundBox col="4 / 5" row="1 / 2">
           <h4 className={h4Style}>SHOP</h4>
-          <Link className={linkTextStyle} href="/olym-tick">
+          <Link className={linkTextStyle} href="/">
             enter
             <RightArrow width={12} />
           </Link>
         </RoundBox>
         <RoundBox col="3 / 4" row="2 / 3">
           <h4 className={h4Style}>offical app</h4>
-          <Link className={storeLinkStyle} href="/olym-tick">
+          <Link className={storeLinkStyle} href="/">
             <Image alt="app store" src={AppStoreImg} width={60} />
             <Image alt="play store" src={PlayStoreImg} width={60} />
           </Link>
@@ -64,7 +64,7 @@ const FooterSection = () => {
 export default FooterSection;
 
 const wrapperStyle = css({
-  width: "100%",
+  width: "80%",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -130,5 +130,5 @@ const mainGridItem = css({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "space-around",
 });
