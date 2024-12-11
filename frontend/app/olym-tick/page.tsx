@@ -11,7 +11,7 @@ import { css } from "@/styled-system/css";
 const page = () => {
   return (
     <main className={mainStyle}>
-      <div className={textStyle}>
+      <div>
         <Image
           alt="logo"
           height={106}
@@ -93,18 +93,6 @@ const mainStyle = css({
   gap: "2rem",
 });
 
-const h2Style = css({
-  fontSize: "2rem",
-  letterSpacing: "0.075rem",
-  fontFamily: "sans",
-  fontWeight: 700,
-  color: "white",
-});
-
-const orangeTextStyle = css({
-  color: "secondary",
-});
-
 const subTextStyle = css({
   textAlign: "right",
 });
@@ -112,24 +100,6 @@ const subTextStyle = css({
 const logoStyle = {
   marginBottom: "2rem",
 };
-
-const linkTextStyle = css({
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "0.25rem",
-  borderBottom: "2px solid",
-  borderColor: "primary",
-  color: "primary",
-  fontWeight: 700,
-  fontSize: "1.5rem",
-  fontFamily: "headline",
-});
-
-const textStyle = css({
-  color: "#ffffff",
-  fontSize: "2.25rem",
-  fontWeight: 700,
-});
 
 const wrapperStyle = {
   padding: "1rem",
