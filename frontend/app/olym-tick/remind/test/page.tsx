@@ -1,11 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import RoundBox from "@/app/olym-tick/remind/components/RoundBox";
-import ThreeScene from "@/app/olym-tick/remind/test/components/ThreeScene";
 import MapPinImg from "@/assets/images/map-pin-img.png";
 import { css } from "@/styled-system/css";
+
+const DynamicThreeScene = dynamic(() => import("./components/ThreeScene"), {
+  ssr: false, // 서버에서 렌더링 비활성화
+});
 
 const page = () => {
   return (
@@ -17,7 +21,7 @@ const page = () => {
       </div>
       <main className={mainStyle}>
         <RoundBox>
-          <ThreeScene />
+          <DynamicThreeScene />
         </RoundBox>
         <div
           style={{
