@@ -5,16 +5,31 @@ import AppStoreImg from "@/assets/images/app_store.png";
 import PlayStoreImg from "@/assets/images/play_store.png";
 import RoundBox from "@/components/common/RoundBox";
 import RightArrow from "@/components/icons/RightArrow";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 import ticketImg from "@/public/ticket.png";
 import { css } from "@/styled-system/css";
 
 const FooterSection = () => {
+  const { isVisible, domRef } = useScrollAnimation();
+
   return (
-    <div className={wrapperStyle}>
-      <h2 className={h2Style}>
+    <div className={wrapperStyle} ref={domRef}>
+      <h2
+        className={h2Style}
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transition: "opacity 1.5s",
+        }}
+      >
         SEOUL <span className={orangeTextStyle}>2036</span>
       </h2>
-      <div className={gridBox}>
+      <div
+        className={gridBox}
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transition: "opacity 2s ease 1s",
+        }}
+      >
         <RoundBox style={{ gridColumn: "1 / 3", gridRow: "1 / 3" }}>
           <div className={mainGridItem}>
             <div>

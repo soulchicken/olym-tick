@@ -2,26 +2,45 @@ import Image from "next/image";
 import React from "react";
 
 import olympic2036 from "@/assets/images/2036-olympic.png";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 import { css } from "@/styled-system/css";
 
 const Olympic2036Section: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { isVisible, domRef } = useScrollAnimation();
+
   return (
     <>
-      <div className={backgroundImageWrapper}>
+      <div className={backgroundImageWrapper} ref={domRef}>
         <Image
           alt="88 올림픽 개막식 사진"
           className={backgroundImage}
           fill={true}
           src={olympic2036}
+          style={{
+            opacity: isVisible ? 0.5 : 0,
+            transition: "opacity 0.5s",
+          }}
         />
       </div>
       <div className={wrapperStyle}>
-        <h2 className={h2Style}>
+        <h2
+          className={h2Style}
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 1.5s",
+          }}
+        >
           SEOUL <br /> <div className={orangeTextStyle}>2036</div>
         </h2>
-        <div className={subStyle}>
+        <div
+          className={subStyle}
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 2s ease 1s",
+          }}
+        >
           <p className={subTitleStyle}>
             <span className={blueTextStyle}>new</span> harmony
           </p>

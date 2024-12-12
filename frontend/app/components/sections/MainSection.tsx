@@ -2,16 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 
 import RightArrow from "@/components/icons/RightArrow";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 import ticketImg from "@/public/ticket.png";
 import logoImg from "@/public/white-logo.png";
 import { css } from "@/styled-system/css";
 
 const MainSection: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isVisible, domRef } = useScrollAnimation();
   return (
-    <div className={wrapperStyle}>
+    <div className={wrapperStyle} ref={domRef}>
       <div className={subStyle}>
-        <Image alt="ticket" height={400} src={ticketImg} width={300} />
-        <div className={textStyle}>
+        <Image
+          alt="ticket"
+          height={400}
+          src={ticketImg}
+          width={300}
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 2s",
+          }}
+        />
+        <div
+          className={textStyle}
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 2s ease 1s",
+          }}
+        >
           <Image
             alt="logo"
             height={80}
