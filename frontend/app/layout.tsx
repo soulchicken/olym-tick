@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description: "올림픽의 기억을 되새기다",
   verification: {
     google: "JgLLDfBTg42CaqHoNuJqRjhpDmQafWLgtjGOzETwz2Q",
+    other: {
+      "naver-site-verification": "6e9457f15fe1cf7e3a6a14d9957a6938b48ce135",
+    },
   },
 };
 
