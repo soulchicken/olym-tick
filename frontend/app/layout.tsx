@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import Head from "next/head";
 import React from "react";
 
 import NavBar from "@/components/common/NavBar";
@@ -15,6 +16,12 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <html lang="ko">
+        <Head>
+          <meta
+            content="JgLLDfBTg42CaqHoNuJqRjhpDmQafWLgtjGOzETwz2Q"
+            name="google-site-verification"
+          />
+        </Head>
         <body className={defaultStyle}>
           <NavBar />
           {children}
