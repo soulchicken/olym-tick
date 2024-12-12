@@ -14,7 +14,7 @@ interface TextProps {
 }
 
 const Text = ({
-  as: Component = "p",
+  as: Component = "div",
   size = "1rem",
   color = "white",
   weight = "regular",

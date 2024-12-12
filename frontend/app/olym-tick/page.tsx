@@ -112,6 +112,7 @@ const wrapperStyle = {
 
 const gridStyle = {
   display: "grid",
+  height: "100%",
   gridTemplateRows: "2fr 1fr",
   gap: "2rem",
 };
