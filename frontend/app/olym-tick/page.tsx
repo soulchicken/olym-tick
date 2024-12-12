@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,12 +7,22 @@ import MemoryImg from "@/assets/images/memory_img.png";
 import RemindImg from "@/assets/images/remind_img.png";
 import RoundBox from "@/components/common/RoundBox";
 import Text from "@/components/common/Text";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
 import logoImg from "@/public/white-logo.png";
 import { css } from "@/styled-system/css";
 
 const page = () => {
+  const { isVisible, domRef } = useScrollAnimation();
+
   return (
-    <main className={mainStyle}>
+    <main
+      className={mainStyle}
+      ref={domRef}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transition: "opacity 2s",
+      }}
+    >
       <div>
         <Image
           alt="logo"
@@ -88,9 +100,9 @@ const mainStyle = css({
   padding: "1rem",
   height: "80vh",
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "center",
   alignItems: "center",
-  gap: "2rem",
+  gap: "10rem",
 });
 
 const subTextStyle = css({
@@ -113,6 +125,7 @@ const wrapperStyle = {
 const gridStyle = {
   display: "grid",
   height: "100%",
+  width: "40%",
   gridTemplateRows: "2fr 1fr",
   gap: "2rem",
 };
