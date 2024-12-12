@@ -15,7 +15,7 @@ const FooterSection = () => {
         SEOUL <span className={orangeTextStyle}>2036</span>
       </h2>
       <div className={gridBox}>
-        <RoundBox col="1 / 3" row="1 / 3">
+        <RoundBox style={{ gridColumn: "1 / 3", gridRow: "1 / 3" }}>
           <div className={mainGridItem}>
             <div>
               <h4 className={olymMainText}>olym-tick</h4>
@@ -28,28 +28,28 @@ const FooterSection = () => {
             <Image alt="ticket" src={ticketImg} width={187} />
           </div>
         </RoundBox>
-        <RoundBox col="3 / 4" row="1 / 2">
+        <RoundBox style={{ gridColumn: "3 / 4", gridRow: "1 / 2" }}>
           <h4 className={h4Style}>highLight</h4>
           <Link className={linkTextStyle} href="/">
             enter
             <RightArrow width={12} />
           </Link>
         </RoundBox>
-        <RoundBox col="4 / 5" row="1 / 2">
+        <RoundBox style={{ gridColumn: "4 / 5", gridRow: "1 / 2" }}>
           <h4 className={h4Style}>SHOP</h4>
           <Link className={linkTextStyle} href="/">
             enter
             <RightArrow width={12} />
           </Link>
         </RoundBox>
-        <RoundBox col="3 / 4" row="2 / 3">
+        <RoundBox style={{ gridColumn: "3 / 4", gridRow: "2 / 3" }}>
           <h4 className={h4Style}>offical app</h4>
           <Link className={storeLinkStyle} href="/">
             <Image alt="app store" src={AppStoreImg} width={60} />
             <Image alt="play store" src={PlayStoreImg} width={60} />
           </Link>
         </RoundBox>
-        <RoundBox col="4 / 5" row="2 / 3">
+        <RoundBox style={{ gridColumn: "4 / 5", gridRow: "2 / 3" }}>
           <h4 className={h4Style}>faQ</h4>
           <Link className={linkTextStyle} href="/olym-tick">
             enter

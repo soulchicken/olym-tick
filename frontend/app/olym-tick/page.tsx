@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import RoundBox from "@/app/olym-tick/components/RoundBox";
 import MemoryImg from "@/assets/images/memory_img.png";
 import RemindImg from "@/assets/images/remind_img.png";
+import RoundBox from "@/components/common/RoundBox";
 import Text from "@/components/common/Text";
 import logoImg from "@/public/white-logo.png";
 import { css } from "@/styled-system/css";
@@ -42,7 +42,7 @@ const page = () => {
         </Text>
       </div>
       <div style={gridStyle}>
-        <RoundBox>
+        <RoundBox isHover>
           <Link href="/olym-tick/remind">
             <div style={wrapperStyle}>
               <Image alt="remind" src={RemindImg} width={180} />
@@ -60,7 +60,7 @@ const page = () => {
             </div>
           </Link>
         </RoundBox>
-        <RoundBox>
+        <RoundBox isHover>
           <div style={wrapperStyle}>
             <Image alt="memory" src={MemoryImg} width={100} />
             <div className={textBoxStyle}>

@@ -3,8 +3,8 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-import RoundBox from "@/app/olym-tick/remind/components/RoundBox";
 import MapPinImg from "@/assets/images/map-pin-img.png";
+import RoundBox from "@/components/common/RoundBox";
 import { css } from "@/styled-system/css";
 
 const DynamicThreeScene = dynamic(() => import("./components/ThreeScene"), {
@@ -31,7 +31,7 @@ const page = () => {
           }}
         >
           <div style={{ width: 200, height: 200 }}>
-            <RoundBox>
+            <RoundBox isPadding={false}>
               <Image alt="map pin 이미지" src={MapPinImg} width={80} />
               <p className={subTitleStyle}>
                 <span className={orangeTextStyle}>지도</span>로 확인하기

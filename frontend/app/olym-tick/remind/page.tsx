@@ -1,20 +1,26 @@
 import Image from "next/image";
 
-import RoundBox from "@/app/olym-tick/remind/components/RoundBox";
 import MapPinImg from "@/assets/images/map-pin-img.png";
+import RoundBox from "@/components/common/RoundBox";
+import Text from "@/components/common/Text";
+import VideoPlayer from "@/components/common/VideoPlayer";
 import NaverMap from "@/components/Map";
 import { css } from "@/styled-system/css";
 
 const page = () => {
   return (
     <>
-      <div className={textStyle}>
-        <span className={headlineStyle}>2036 SEOUL [08/22]</span>
-        <span className={boldStyle}>펜싱 남자 사브르 단체전 (결승전) </span>
-        <span className={regularStyle}>한국 : 헝가리</span>
-      </div>
+      <Text className={textStyle}>
+        <Text font="headline" size="1.5rem">
+          2036 SEOUL [08/22]
+        </Text>
+        <Text size="1.5rem" weight="bold">
+          펜싱 남자 사브르 단체전 (결승전)
+        </Text>
+        <Text size="1.5rem">한국 : 헝가리</Text>
+      </Text>
       <main className={mainStyle}>
-        <RoundBox>
+        <RoundBox isPadding={false}>
           <NaverMap />
         </RoundBox>
         <div
@@ -24,26 +30,43 @@ const page = () => {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ width: 150, height: 150 }}>
-            <RoundBox>
+          <div style={{ width: 180, height: 180 }}>
+            <RoundBox
+              isHover
+              className={css({
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              })}
+            >
               <Image alt="map pin 이미지" src={MapPinImg} width={80} />
-              <p className={subTitleStyle}>
-                <span className={orangeTextStyle}>지도</span>로 확인하기
-              </p>
+              <Text>
+                <Text as="span" color="secondary">
+                  지도
+                </Text>
+                로 확인하기
+              </Text>
             </RoundBox>
           </div>
           <div>
-            <p className={subTitleStyle}>
-              <span className={orangeTextStyle}>조작</span>해보세요!
-            </p>
-            <p className={smallTextStyle}>
+            <Text>
+              <Text as="span" color="secondary" weight="bold">
+                조작
+              </Text>
+              해보세요!
+            </Text>
+            <Text size="0.8rem">
               마우스 : 시야 이동 <br />
               방향키 : 시간 이동 <br />
               스페이스바 : 시간 멈춤
-            </p>
+            </Text>
           </div>
         </div>
       </main>
+      <VideoPlayer />
     </>
   );
 };
@@ -53,22 +76,7 @@ export default page;
 const textStyle = css({
   display: "flex",
   gap: "1rem",
-  color: "white",
-  fontSize: "1. 5rem",
   paddingBottom: "1rem",
-});
-
-const headlineStyle = css({
-  fontFamily: "headline",
-});
-
-const boldStyle = css({
-  fontFamily: "sans",
-  fontWeight: "bold",
-});
-
-const regularStyle = css({
-  fontFamily: "sans",
 });
 
 const mainStyle = css({
@@ -77,21 +85,4 @@ const mainStyle = css({
   gridTemplateColumns: "4fr 1fr",
   gap: "2rem",
   margin: "2rem",
-});
-
-const subTitleStyle = css({
-  fontFamily: "sans",
-  fontSize: "1rem",
-  color: "white",
-});
-
-const orangeTextStyle = css({
-  color: "secondary",
-  fontWeight: "bold",
-});
-
-const smallTextStyle = css({
-  fontFamily: "sans",
-  fontSize: "0.8rem",
-  color: "white",
 });
