@@ -3,7 +3,6 @@ import Image from "next/image";
 import MapPinImg from "@/assets/images/map-pin-img.png";
 import RoundBox from "@/components/common/RoundBox";
 import Text from "@/components/common/Text";
-import VideoPlayer from "@/components/common/VideoPlayer";
 import NaverMap from "@/components/Map";
 import { css } from "@/styled-system/css";
 
@@ -66,7 +65,6 @@ const page = () => {
           </div>
         </div>
       </main>
-      <VideoPlayer />
     </>
   );
 };
