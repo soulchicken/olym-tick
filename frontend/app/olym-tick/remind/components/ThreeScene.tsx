@@ -128,7 +128,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ url }) => {
       <ambientLight color="white" intensity={1} />
       <pointLight intensity={1.5} position={[10, 10, 10]} />
       <directionalLight color="white" intensity={5} position={[-1, 2, 4]} />
-      <Model url={url} onModelLoaded={setModelScene} />
+      <Model url={url} />
       {modelScene && <FitCameraToModel object={modelScene} />}
       <OrbitControls />
       <CameraController />
