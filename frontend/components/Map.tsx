@@ -20,8 +20,24 @@ const NaverMap = () => {
 
       // 좌표 배열
       const locations = [
-        { name: "마포 월드컵 경기장", lat: 37.56825004, lng: 126.8972437 },
-        { name: "서울 숲", lat: 37.543574174, lng: 127.044727503 },
+        {
+          name: "마포 월드컵 경기장",
+          lat: 37.56825004,
+          lng: 126.8972437,
+          url: "/olym-tick/remind/bridge",
+        },
+        {
+          name: "평화공원",
+          lat: 37.56249,
+          lng: 126.89519,
+          url: "/olym-tick/remind/village",
+        },
+        {
+          name: "서울 숲",
+          lat: 37.543574174,
+          lng: 127.044727503,
+          url: "/olym-tick/remind",
+        },
       ];
 
       locations.forEach((location) => {
@@ -37,7 +53,7 @@ const NaverMap = () => {
         new naver.maps.Polyline({
           map,
           path,
-          strokeColor: "#FF0000", // 선 색상
+          strokeColor: "#EE334E", // 선 색상
           strokeWeight: 4, // 선 두께
           strokeStyle: "solid", // 선 스타일
         });
@@ -59,7 +75,7 @@ const NaverMap = () => {
         // 마커 클릭 이벤트
         naver.maps.Event.addListener(marker, "click", () => {
           // alert(`${location.name} 마커를 클릭했습니다!`);
-          router.push("/olym-tick/remind/test");
+          router.push("/olym-tick/remind/village");
         });
       });
     };

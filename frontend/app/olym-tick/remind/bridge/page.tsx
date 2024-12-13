@@ -2,9 +2,11 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import MapPinImg from "@/assets/images/map-pin-img.png";
+import MapPinImg from "@/assets/images/check_img.png";
 import RoundBox from "@/components/common/RoundBox";
+import Text from "@/components/common/Text";
 import { css } from "@/styled-system/css";
 
 const DynamicThreeScene = dynamic(() => import("../components/ThreeScene"), {
@@ -12,13 +14,19 @@ const DynamicThreeScene = dynamic(() => import("../components/ThreeScene"), {
 });
 
 const page = () => {
+  const router = useRouter();
+
   return (
     <>
-      <div className={textStyle}>
-        <span className={headlineStyle}>2036 SEOUL [08/22]</span>
-        <span className={boldStyle}>펜싱 남자 사브르 단체전 (결승전) </span>
-        <span className={regularStyle}>한국 : 헝가리</span>
-      </div>
+      <Text className={textStyle}>
+        <Text font="headline" size="1.5rem">
+          2036 SEOUL [08/22]
+        </Text>
+        <Text size="1.5rem" weight="bold">
+          펜싱 남자 사브르 단체전 (결승전)
+        </Text>
+        <Text size="1.5rem">한국 : 헝가리</Text>
+      </Text>
       <main className={mainStyle}>
         <RoundBox
           isPadding={false}
@@ -37,10 +45,14 @@ const page = () => {
           }}
         >
           <div style={{ width: 200, height: 200 }}>
-            <RoundBox className={boxStyle}>
+            <RoundBox
+              className={boxStyle}
+              style={{ cursor: "pointer" }}
+              onClick={() => router.push("/olym-tick/remind/")}
+            >
               <Image alt="map pin 이미지" src={MapPinImg} width={80} />
               <p className={subTitleStyle}>
-                <span className={orangeTextStyle}>지도</span>로 확인하기
+                <span className={orangeTextStyle}>지도</span>확인 완료
               </p>
             </RoundBox>
           </div>
@@ -69,19 +81,6 @@ const textStyle = css({
   color: "white",
   fontSize: "1. 5rem",
   paddingBottom: "1rem",
-});
-
-const headlineStyle = css({
-  fontFamily: "headline",
-});
-
-const boldStyle = css({
-  fontFamily: "sans",
-  fontWeight: "bold",
-});
-
-const regularStyle = css({
-  fontFamily: "sans",
 });
 
 const mainStyle = css({

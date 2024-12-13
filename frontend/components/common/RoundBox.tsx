@@ -4,6 +4,7 @@ interface RoundBoxProps {
   style?: React.CSSProperties;
   isHover?: boolean;
   isPadding?: boolean;
+  onClick?: () => void;
 }
 
 const RoundBox = ({
